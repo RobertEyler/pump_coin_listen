@@ -11,7 +11,7 @@ import { Keypair } from "@solana/web3.js";
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 import * as idlBonk from "../idls/bonk.json";
 import { base64 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { bot } from "../bot";
+import { bot, send_ids } from "../bot";
 dotenv.config();
 class GrpcStreamManager {
     private client: Client;
@@ -179,13 +179,15 @@ function handleTransactionUpdate(data: any): void {
             if (event.name == "tradeEvent") {
                 if ('migrate' in event.data.poolStatus) {
                     bonkProgram.account.poolState.fetch(event.data.poolState).then(
-                        (poolState)=>{
+                        (poolState) => {
                             const token = poolState.baseMint;
-                            bot.sendMessage("",`Lets'Bonk Complete!!\nComplete at ${new Date()} \nhttps://letsbonk.fun/token/${token}`);
+                            for (const tgId of send_ids) {
+                                bot.sendMessage(tgId, `Lets'Bonk Complete!!\nComplete at ${new Date()} \nhttps://letsbonk.fun/token/${token}`);
+                            }
                         }
                     );
 
-                } 
+                }
             }
         }
     }
