@@ -169,8 +169,11 @@ const wallet = new NodeWallet(Keypair.generate());
 const p = new AnchorProvider(connection, wallet);
 const bonkProgram: Program<Bonk> = new Program(idlBonk as Bonk, p);
 function handleTransactionUpdate(data: any): void {
-    // console.log(JSON.stringify(data, null, 2))
+    if(!data.transaction){
+        return;
+    }
     const eventIxs = data.transaction.transaction.meta.innerInstructions[0].instructions;
+
     for (const eventIx of eventIxs) {
         const rawData = utils.bytes.bs58.decode(eventIx.data);
         const base64Data = base64.encode(rawData.subarray(8));
