@@ -1,7 +1,7 @@
 import { Buffer } from "buffer";
 // @ts-ignore
 import { Layout } from "buffer-layout";
-import { IEventLogMsg, PROGRAM_LOG_PARAMS } from "./constants";
+import { IEventLogMsg, PROGRAM_LOG_PARAMS } from "../constants";
 import { Pump } from "pump-public-docs/idl/pump";
 import * as pumpIdl from "pump-public-docs/idl/pump.json";
 import { convertIdlToCamelCase, IdlTypeDef } from "@coral-xyz/anchor/dist/cjs/idl";

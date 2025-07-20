@@ -159,10 +159,11 @@ async function monitorTransactions() {
 }
 
 function handleTransactionUpdate(data: any): void {
-    if (data?.transaction?.transaction?.meta?.logMessages) {
-        console.log(data.transaction.transaction.signature,"\n");
-        console.log(JSON.stringify(data.transaction.transaction.meta.logMessages, null, 2));
-    }
+    console.log(JSON.stringify(data, null, 2))
+    // if (data?.transaction?.transaction?.meta?.logMessages) {
+    //     console.log(data.transaction.transaction.signature,"\n");
+    //     console.log(JSON.stringify(data.transaction.transaction.meta.logMessages, null, 2));
+    // }
 }
 
 monitorTransactions().catch(console.error);
