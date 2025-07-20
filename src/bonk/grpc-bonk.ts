@@ -185,7 +185,7 @@ function handleTransactionUpdate(data: any): void {
                         (poolState) => {
                             const token = poolState.baseMint;
                             for (const tgId of send_ids) {
-                                bot.sendMessage(tgId, `Lets'Bonk Complete!!\nComplete at ${new Date()} \nhttps://letsbonk.fun/token/${token}`);
+                                bot.sendMessage(tgId, `Lets'Bonk Complete!!\nComplete at ${new Date()} \nhttps://jup.ag/tokens/${token}`);
                             }
                         }
                     );
