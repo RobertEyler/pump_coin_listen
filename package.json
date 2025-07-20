@@ -1,8 +1,8 @@
 {
-  "name": "analyze-solana-bun",
+  "name": "meme_coin_listen",
   "private": true,
   "scripts": {
-    "start": "ts-node ./src/index.ts",
+    "start-pump": "ts-node ./src/pump/index.ts",
     "start-bonk": "ts-node ./src/bonk/grpc-bonk.ts"
   },
   "peerDependencies": {

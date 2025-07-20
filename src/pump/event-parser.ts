@@ -6,7 +6,7 @@ import { Pump } from "pump-public-docs/idl/pump";
 import * as pumpIdl from "pump-public-docs/idl/pump.json";
 import { convertIdlToCamelCase, IdlTypeDef } from "@coral-xyz/anchor/dist/cjs/idl";
 import { IdlCoder } from "@coral-xyz/anchor/dist/cjs/coder/borsh/idl";
-import TwitterApi from "twitter-api-v2";
+import { bot, send_ids } from "../bot";
 /**
  * @description event 转换器,负责将筛选,并交给eventDbProcessor处理
  */
@@ -52,8 +52,11 @@ export class EventParser {
             if (matches) {
                 const txId = eventLog.txId
                 let parseData= { ...layout.layout.decode(logArr.subarray(givenDisc.length)), tx:txId };
-                if (name == "createEvent"){
-                    console.log(parseData)
+                if (name == "completeEvent"){
+                    const token = parseData.mint;
+                    for (const tgId of send_ids) {
+                        bot.sendMessage(tgId, `Pumpfun Complete!!\nComplete at ${new Date(parseData.timestamp)} \nhttps://pump.fun/coin/${token}`);
+                    }
                 }
                 break;
             }

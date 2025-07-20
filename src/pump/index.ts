@@ -5,7 +5,7 @@ dotenv.config();
 const connection = new Connection(process.env.SOLANA_INNRT_URL!, {wsEndpoint: process.env.SOLANA_INNRT_WSS!})
 
 const sub = async()=>{
-    connection.onLogs(filterPumpfun,dealLog,"confirmed");
+    connection.onLogs(filterPumpfun,dealLog,"processed");
 }
 const filterPumpfun:LogsFilter = new PublicKey("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P")
 const eventParser:EventParser = new EventParser();

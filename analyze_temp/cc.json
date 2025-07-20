@@ -1,0 +1,7 @@
+yarn run v1.22.22
+$ ts-node ./src/bonk/grpc-bonk.ts
+data {
+  "filters": [],
+  "ping": {},
+  "createdAt": {}
+}
