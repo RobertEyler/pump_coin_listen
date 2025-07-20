@@ -30,7 +30,7 @@ yarn run start-pump
 
 ## Join Our Community
 Discuss new opportunities and collaborate with other traders in our Telegram channel:  
-[👉 t.me/your_channel](https://t.me/meme_token_pump_chat)
+[👉 t.me/meme_token_pump_chat](https://t.me/meme_token_pump_chat)
 
 > Always be among the first to discover new token launches!
 
