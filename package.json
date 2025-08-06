@@ -2,8 +2,9 @@
   "name": "meme_coin_listen",
   "private": true,
   "scripts": {
-    "start-pump": "ts-node ./src/pump/index.ts",
-    "start-bonk": "ts-node ./src/bonk/grpc-bonk.ts"
+    "start-pump": "ts-node ./src/pump-start.ts",
+    "start-bonk": "ts-node ./src/bonk-start.ts",
+    "all": "ts-node ./src/start.ts"
   },
   "peerDependencies": {
     "typescript": "^5"

@@ -136,7 +136,7 @@ class GrpcStreamManager {
 
 
 // Transaction monitoring implementation
-async function monitorTransactions() {
+export async function bonkSub() {
     const manager = new GrpcStreamManager(
         process.env.GRPC_ENDPOINT || "your-grpc-url",
         process.env.GRPC_AUTH_TOKEN || "your-grpc-token",
@@ -195,5 +195,3 @@ function handleTransactionUpdate(data: any): void {
         }
     }
 }
-
-monitorTransactions().catch(console.error);

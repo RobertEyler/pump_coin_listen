@@ -1,3 +1,4 @@
-import { bonkSub } from "./bonk/bonk-listen";
+import { bonkSub } from "./bonk/grpc-bonk";
+
 
 bonkSub().then();
