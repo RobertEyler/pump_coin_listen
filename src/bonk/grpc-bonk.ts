@@ -176,9 +176,9 @@ function handleTransactionUpdate(data: any): void {
 
     for (const eventIx of eventIxs) {
         const rawData = utils.bytes.bs58.decode(eventIx.data);
-        const base64Data = base64.encode(rawData.subarray(8));
         let event;
         try {
+            const base64Data = base64.encode(rawData.subarray(8));
             event = bonkProgram.coder.events.decode(base64Data);
         }catch(e){
             console.log("not contain",rawData);
