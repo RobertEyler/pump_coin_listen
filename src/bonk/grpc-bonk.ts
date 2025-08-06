@@ -177,7 +177,13 @@ function handleTransactionUpdate(data: any): void {
     for (const eventIx of eventIxs) {
         const rawData = utils.bytes.bs58.decode(eventIx.data);
         const base64Data = base64.encode(rawData.subarray(8));
-        const event = bonkProgram.coder.events.decode(base64Data);
+        let event;
+        try {
+            event = bonkProgram.coder.events.decode(base64Data);
+        }catch(e){
+            console.log("not contain",rawData);
+        }
+
         if (event != null) {
             if (event.name == "tradeEvent") {
                 if ('migrate' in event.data.poolStatus) {
