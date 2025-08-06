@@ -55,7 +55,7 @@ export class EventParser {
                 if (name == "completeEvent"){
                     const token = parseData.mint;
                     for (const tgId of send_ids) {
-                        bot.sendMessage(tgId, `Pumpfun Complete!!\nComplete at ${new Date(parseData.timestamp)} \nhttps://pump.fun/coin/${token}`);
+                        bot.sendMessage(tgId, `Pumpfun Complete!!\nComplete at ${new Date(parseData.timestamp*1000)} \nhttps://pump.fun/coin/${token}`);
                     }
                 }
                 break;
