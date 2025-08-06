@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const connection = new Connection(process.env.SOLANA_INNRT_URL!, {wsEndpoint: process.env.SOLANA_INNRT_WSS!})
 
-const sub = async()=>{
+export const pumpSub = async()=>{
     connection.onLogs(filterPumpfun,dealLog,"processed");
 }
 const filterPumpfun:LogsFilter = new PublicKey("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P")
@@ -17,5 +17,3 @@ const dealLog:LogsCallback = (logs: Logs, ctx: Context)=>{
         console.trace(err);
     })
 }
-
-sub().then();
