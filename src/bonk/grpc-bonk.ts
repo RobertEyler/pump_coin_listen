@@ -146,7 +146,7 @@ export async function bonkSub() {
     const subscribeRequest: SubscribeRequest = {
         transactions: {
             client: {
-                accountInclude: ["2DPAtwB8L12vrMRExbLuyGnC7n2J5LNoZQSejeQGpwkr"],
+                accountInclude: ["LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj"],
                 accountExclude: [],
                 accountRequired: [],
                 vote: false,
@@ -167,7 +167,7 @@ export async function bonkSub() {
 }
 const wallet = new NodeWallet(Keypair.generate());
 const p = new AnchorProvider(connection, wallet);
-const bonkProgram: Program<Bonk> = new Program(idlBonk as Bonk, p);
+export const bonkProgram: Program<Bonk> = new Program(idlBonk as Bonk, p);
 function handleTransactionUpdate(data: any): void {
     if(!data.transaction){
         return;
@@ -181,7 +181,8 @@ function handleTransactionUpdate(data: any): void {
             const base64Data = base64.encode(rawData.subarray(8));
             event = bonkProgram.coder.events.decode(base64Data);
         }catch(e){
-            console.log("not contain",rawData);
+            console.log("Raw data (base64):", Buffer.from(rawData).toString('base64'));
+            console.log("transaction:",data.transaction.transaction.signatures);
         }
 
         if (event != null) {
