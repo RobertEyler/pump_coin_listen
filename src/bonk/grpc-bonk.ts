@@ -182,7 +182,7 @@ function handleTransactionUpdate(data: any): void {
             event = bonkProgram.coder.events.decode(base64Data);
         }catch(e){
             console.log("Raw data (base64):", Buffer.from(rawData).toString('base64'));
-            console.log("transaction:",data.transaction.transaction.signatures);
+            console.log("transaction:",data.transaction.transaction.signature);
         }
 
         if (event != null) {
